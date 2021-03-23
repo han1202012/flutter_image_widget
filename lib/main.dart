@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 void main() => runApp(MyApp());
 
@@ -61,43 +62,45 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+        child: ListView(
+          children: [
 
-            Text(
-              'приветствовать товарища Сталина:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Stack(
+              children: [
+                // 进度条
+                Center(child: CircularProgressIndicator(),),
+                Center(
+                  // 网络加载时渐变出现
+                  child: FadeInImage.memoryNetwork(
+                    // Placeholder
+                    placeholder: kTransparentImage,
+                    image: "https://img-blog.csdnimg.cn/2021032321394771.png",
+                  ),
+                )
+              ],
             ),
 
             // 图片组件 , 从网络中加载一张图片
-            Image.network(
+            /*Image.network(
               // 图片地址
               "https://img-blog.csdnimg.cn/2021032313493741.png",
-              width: 200,
             ),
 
             Image(
-              width: 200,
               image: AssetImage("images/sidalin.png"),
             ),
 
-            Image.asset(
-              'images/sidalin2.png',
-              width: 200,),
+            Image.asset('images/sidalin2.png', ),
 
             /// 从 SD 卡加载图片
             if(sdPath != null)
               Image.file(
                 File('$sdPath/sidalin3.png'),
                 width: 200,
-              ),
-
+              ),*/
           ],
-        ),
+        )
+
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
