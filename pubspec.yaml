@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   path_provider: ^2.0.1
   transparent_image: ^2.0.0
+  cached_network_image: ^2.5.1
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,8 @@ flutter:
     - images/sidalin.png
     - images/sidalin2.png
     - images/waiting.gif
+
+  fonts:
+    - family:  MyFlutterApp
+      fonts:
+        - asset: fonts/MyFlutterApp.ttf
